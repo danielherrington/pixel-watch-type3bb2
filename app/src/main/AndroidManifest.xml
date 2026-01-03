@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:label="Ressence BB2">
+        
+        <!-- 
+          Modern Watch Face Format declaration.
+          The system reads 'res/raw/watchface.xml' to render the face.
+        -->
+        <property
+            android:name="com.google.android.wearable.watchface.format"
+            android:resource="@raw/watchface" />
+
+    </application>
+</manifest>
