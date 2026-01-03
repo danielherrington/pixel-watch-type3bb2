@@ -37,6 +37,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- 
             Service required for Picker Discovery.
             Even though we use WFF XML for rendering, this Service entry is mandatory
