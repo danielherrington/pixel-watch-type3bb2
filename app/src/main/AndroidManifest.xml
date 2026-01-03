@@ -40,18 +40,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.example.ressencebb2.RessenceWatchFaceService"
-            android:exported="true"
-            android:label="Ressence BB2"
-            android:permission="android.permission.BIND_WALLPAPER"
-            android:directBootAware="true">
-            <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService" />
-                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
-            </intent-filter>
-        </service>
-
         <property
             android:name="com.google.android.wearable.watchface.format"
             android:resource="@raw/watchface" />
