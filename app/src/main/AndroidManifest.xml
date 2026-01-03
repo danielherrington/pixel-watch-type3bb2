@@ -22,9 +22,7 @@
         <meta-data
             android:name="com.google.android.wearable.watchface.preview_circular"
             android:resource="@drawable/preview" />
-        <meta-data
-            android:name="com.google.android.wearable.watchface.wearableConfigurationAction"
-            android:value="androidx.wear.watchface.editor.action.WATCH_FACE_EDITOR" />
+
 
         <!-- 
             Trampoline Activity to verify installation. 
@@ -49,8 +47,7 @@
             android:name="com.example.ressencebb2.RessenceWatchFaceService"
             android:exported="true"
             android:label="Ressence BB2"
-            android:permission="android.permission.BIND_WALLPAPER"
-            android:directBootAware="true">
+            android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService" />
                 <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
