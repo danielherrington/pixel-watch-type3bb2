@@ -1,0 +1,41 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+  <path
+      android:pathData="M50,50m-50,0a50,50 0 1,1 100,0a50,50 0 1,1 -100,0"
+      android:fillColor="#111111"/>
+
+  <!-- Oil Gradient -->
+  <path
+      android:pathData="M50,50m-50,0a50,50 0 1,1 100,0a50,50 0 1,1 -100,0">
+    <aapt:attr name="android:fillColor">
+      <gradient android:type="radial" android:centerX="50" android:centerY="50" android:gradientRadius="50">
+        <item android:offset="0.5" android:color="#00111111"/>
+        <item android:offset="1.0" android:color="#99000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+
+  <!-- Temp Gauge Arcs - Blue to Red -->
+  <!-- Blue (Cold) -->
+  <path
+      android:pathData="M20,60 A35,35 0 0,1 30,30"
+      android:strokeColor="#4682B4"
+      android:strokeWidth="3"/>
+  
+  <!-- Mid -->
+  <path
+      android:pathData="M30,30 A35,35 0 0,1 70,30"
+      android:strokeColor="#555555"
+      android:strokeWidth="3"/>
+  
+  <!-- Red (Hot) -->
+  <path
+      android:pathData="M70,30 A35,35 0 0,1 80,60"
+      android:strokeColor="#B22222"
+      android:strokeWidth="3"/>
+
+</vector>

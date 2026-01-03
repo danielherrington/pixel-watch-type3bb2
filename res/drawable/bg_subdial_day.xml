@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+  <path
+      android:pathData="M60,60m-60,0a60,60 0 1,1 120,0a60,60 0 1,1 -120,0"
+      android:fillColor="#111111"/>
+
+  <!-- Oil Gradient -->
+  <path
+      android:pathData="M60,60m-60,0a60,60 0 1,1 120,0a60,60 0 1,1 -120,0">
+    <aapt:attr name="android:fillColor">
+      <gradient android:type="radial" android:centerX="60" android:centerY="60" android:gradientRadius="60">
+        <item android:offset="0.5" android:color="#00111111"/>
+        <item android:offset="1.0" android:color="#99000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+
+  <!-- Day Segments (Simplified Arcs) -->
+  <!-- Weekend Zone (Sat/Sun) - Orange Arc (~100 degrees) -->
+  <path
+      android:pathData="M60,15 A45,45 0 0,1 100,80"
+      android:strokeColor="#D4AF37"
+      android:strokeWidth="4"
+      android:strokeAlpha="0.8"/>
+  
+  <!-- Weekday Zone - Grey Arc -->
+  <path
+      android:pathData="M100,80 A45,45 0 1,1 60,15"
+      android:strokeColor="#333333"
+      android:strokeWidth="4"/>
+
+  <!-- Ticks for days -->
+  <path android:fillColor="#FFFFFF" android:pathData="M59,10 L61,10 L61,20 L59,20 Z" />
+
+</vector>

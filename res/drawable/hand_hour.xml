@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="160dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+  
+  <!-- White Hour Hand -->
+  <path
+      android:fillColor="#FFFFFF"
+      android:pathData="M78,40 L82,40 L81,80 L79,80 Z" />
+  
+  <!-- Center Cap -->
+  <circle android:cx="80" android:cy="80" android:r="3" android:fillColor="#111111"/>
+  <circle android:cx="80" android:cy="80" android:r="2" android:fillColor="#333333"/>
+</vector>

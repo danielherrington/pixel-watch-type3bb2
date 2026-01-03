@@ -1,0 +1,96 @@
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+    
+    <!-- Global Black Background -->
+    <PartDraw x="0" y="0" width="450" height="450">
+        <Fill color="#000000" />
+    </PartDraw>
+
+    <!-- PLANETARY SYSTEM -->
+    <!-- The Main Disc Group rotates continuously to indicate MINUTES. 
+         Minute Hand is graphical on the disc, pointing "UP" relative to the disc.
+    -->
+    <Group x="0" y="0" width="450" height="450"
+           rotation="([MIN] + [SEC]/60) * 6">
+        
+        <!-- 1. The Main Disc Background (Minutes Track) -->
+        <PartImage x="0" y="0" width="450" height="450">
+            <Image resource="bg_main_minute_disc" />
+        </PartImage>
+
+        <!-- 2. SET OF ORBITAL SUB-DIALS -->
+        <!-- Each sub-dial is positioned at a specific (x,y) on the main disc.
+             They must COUNTER-ROTATE to appear upright to the user.
+             Counter Rotation = -1 * Parent Rotation
+        -->
+
+        <!-- SUB-DIAL 1: HOURS (Bottom Left approx) 
+             Position: x=140, y=280 approx
+        -->
+        <Group x="105" y="245" width="160" height="160"
+               rotation="-(([MIN] + [SEC]/60) * 6)">
+            <!-- Dial Background -->
+            <PartImage x="0" y="0" width="160" height="160">
+                <Image resource="bg_subdial_hours"/>
+            </PartImage>
+            <!-- Hour Hand -->
+            <PartImage x="0" y="0" width="160" height="160"
+                       pivotX="0.5" pivotY="0.5"
+                       rotation="([HOUR_0_11] + [MIN]/60) * 30">
+                <Image resource="hand_hour"/>
+            </PartImage>
+        </Group>
+
+        <!-- SUB-DIAL 2: RUNNER (180s) (Top Center) 
+             Position: x=165, y=50 approx
+        -->
+        <Group x="165" y="80" width="120" height="120"
+               rotation="-(([MIN] + [SEC]/60) * 6)">
+            <!-- Dial Background -->
+            <PartImage x="0" y="0" width="120" height="120">
+                <Image resource="bg_subdial_runner"/>
+            </PartImage>
+            <!-- Runner Hand (360 deg in 180s) -->
+            <!-- (TIME_T % 180000) / 500 -->
+            <PartImage x="0" y="0" width="120" height="120"
+                       pivotX="0.5" pivotY="0.5"
+                       rotation="([TIME_T] % 180000) / 500">
+                <Image resource="hand_runner"/>
+            </PartImage>
+        </Group>
+
+        <!-- SUB-DIAL 3: DAY (Middle Right) 
+             Position: x=300, y=200 approx
+        -->
+        <Group x="300" y="180" width="120" height="120"
+               rotation="-(([MIN] + [SEC]/60) * 6)">
+            <!-- Dial Background -->
+            <PartImage x="0" y="0" width="120" height="120">
+                <Image resource="bg_subdial_day"/>
+            </PartImage>
+            <!-- Day Hand (1-7) -->
+            <PartImage x="0" y="0" width="120" height="120"
+                       pivotX="0.5" pivotY="0.5"
+                       rotation="([DAY_OF_WEEK] - 1) * 51.4">
+                <Image resource="hand_small"/>
+            </PartImage>
+        </Group>
+
+        <!-- SUB-DIAL 4: TEMP / BATTERY (Bottom Right) 
+             Position: x=250, y=300 approx
+        -->
+        <Group x="250" y="300" width="100" height="100"
+               rotation="-(([MIN] + [SEC]/60) * 6)">
+            <!-- Dial Background -->
+            <PartImage x="0" y="0" width="100" height="100">
+                <Image resource="bg_subdial_temp"/>
+            </PartImage>
+            <!-- Gauge Hand (-45 to +45 range) -->
+            <PartImage x="0" y="0" width="100" height="100"
+                       pivotX="0.5" pivotY="0.5"
+                       rotation="([BATTERY_PERCENT] * 0.9) - 45">
+                <Image resource="hand_small"/>
+            </PartImage>
+        </Group>
+
+    </Group>
+</WatchFace>

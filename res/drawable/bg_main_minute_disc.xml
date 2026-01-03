@@ -1,0 +1,44 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="450dp"
+    android:height="450dp"
+    android:viewportWidth="450"
+    android:viewportHeight="450">
+  
+  <!-- Main Matte Black Disc Body -->
+  <path
+      android:pathData="M225,225m-225,0a225,225 0 1,1 450,0a225,225 0 1,1 -450,0"
+      android:fillColor="#111111"/>
+
+  <!-- Oil Effect Gradient Overlay (Subtle) -->
+  <path
+      android:pathData="M225,225m-225,0a225,225 0 1,1 450,0a225,225 0 1,1 -450,0">
+    <aapt:attr name="android:fillColor">
+      <gradient android:type="radial" android:centerX="225" android:centerY="225" android:gradientRadius="225">
+        <item android:offset="0.0" android:color="#00111111"/>
+        <item android:offset="1.0" android:color="#AA000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+
+  <!-- Minute Markers (Simple Ticks for 0, 15, 30, 45 and in between) -->
+  <!-- 0/60 Marker (Top) - Triangle/Logo style -->
+  <path android:fillColor="#CCCCCC" android:pathData="M220,10 L230,10 L225,25 Z" />
+  
+  <!-- 15 Marker (Right) -->
+  <path android:fillColor="#555555" android:pathData="M430,223 L440,223 L440,227 L430,227 Z" />
+  
+  <!-- 30 Marker (Bottom) -->
+  <path android:fillColor="#555555" android:pathData="M223,430 L227,430 L227,440 L223,440 Z" />
+  
+  <!-- 45 Marker (Left) -->
+  <path android:fillColor="#555555" android:pathData="M10,223 L20,223 L20,227 L10,227 Z" />
+
+  <!-- The "Minute Hand" is painted ON this disc. 
+       In Ressence Type 3, the Minute hand is a long graphic on the main disc.
+       We will draw a long hand pointing to the edge (Top/0 position). 
+  -->
+  <path
+      android:fillColor="#FFFFFF"
+      android:pathData="M223,40 L227,40 L226,225 L224,225 Z" />
+
+</vector>

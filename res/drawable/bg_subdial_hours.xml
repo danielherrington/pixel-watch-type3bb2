@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="160dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+
+  <!-- Subdial Disc -->
+  <path
+      android:pathData="M80,80m-80,0a80,80 0 1,1 160,0a80,80 0 1,1 -160,0"
+      android:fillColor="#111111"/>
+
+  <!-- Oil Gradient -->
+  <path
+      android:pathData="M80,80m-80,0a80,80 0 1,1 160,0a80,80 0 1,1 -160,0">
+    <aapt:attr name="android:fillColor">
+      <gradient android:type="radial" android:centerX="80" android:centerY="80" android:gradientRadius="80">
+        <item android:offset="0.5" android:color="#00111111"/>
+        <item android:offset="1.0" android:color="#99000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+
+  <!-- Hour Markers (Simplified 12, 3, 6, 9) -->
+  <!-- 12 -->
+  <path android:fillColor="#FFFFFF" android:pathData="M79,10 L81,10 L81,20 L79,20 Z" />
+  <!-- 3 -->
+  <path android:fillColor="#555555" android:pathData="M140,79 L150,79 L150,81 L140,81 Z" />
+  <!-- 6 -->
+  <path android:fillColor="#555555" android:pathData="M79,140 L81,140 L81,150 L79,150 Z" />
+  <!-- 9 -->
+  <path android:fillColor="#555555" android:pathData="M10,79 L20,79 L20,81 L10,81 Z" />
+  
+  <!-- Ressence Logo "Hand" Icon (Static background element often found on sub-dials) -->
+  <path
+      android:fillColor="#333333"
+      android:pathData="M70,80 L80,70 L90,80 L80,90 Z" />
+
+</vector>

@@ -1,0 +1,31 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+  <path
+      android:pathData="M60,60m-60,0a60,60 0 1,1 120,0a60,60 0 1,1 -120,0"
+      android:fillColor="#111111"/>
+
+   <!-- Oil Gradient -->
+  <path
+      android:pathData="M60,60m-60,0a60,60 0 1,1 120,0a60,60 0 1,1 -120,0">
+    <aapt:attr name="android:fillColor">
+      <gradient android:type="radial" android:centerX="60" android:centerY="60" android:gradientRadius="60">
+        <item android:offset="0.5" android:color="#00111111"/>
+        <item android:offset="1.0" android:color="#99000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+
+  <!-- Markers: A simple ring -->
+  <path
+      android:pathData="M60,10 A50,50 0 1,0 60,110 A50,50 0 1,0 60,10"
+      android:strokeColor="#333333"
+      android:strokeWidth="2"/>
+
+  <!-- Top Marker -->
+  <path android:fillColor="#FFFFFF" android:pathData="M59,6 L61,6 L61,14 L59,14 Z" />
+
+</vector>
