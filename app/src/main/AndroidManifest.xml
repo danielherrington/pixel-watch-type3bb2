@@ -16,15 +16,15 @@
           But to be safe and standard, we add the service block pointing to the
           Google WatchFaceService class which handles the XML.
         -->
-        <service
-            android:name="androidx.wear.watchface.WatchFaceService"
-            android:permission="android.permission.BIND_WALLPAPER"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService" />
-                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
-            </intent-filter>
-        </service>
+        <meta-data
+            android:name="com.google.android.wearable.watchface.preview"
+            android:resource="@drawable/preview" />
+        <meta-data
+            android:name="com.google.android.wearable.watchface.preview_circular"
+            android:resource="@drawable/preview" />
+        <meta-data
+            android:name="com.google.android.wearable.watchface.wearableConfigurationAction"
+            android:value="androidx.wear.watchface.editor.action.WATCH_FACE_EDITOR" />
 
         <property
             android:name="com.google.android.wearable.watchface.format"
