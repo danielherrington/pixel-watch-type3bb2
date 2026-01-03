@@ -8,7 +8,7 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val textView = TextView(this)
-        textView.text = "Ressence BB2 Installed!\nLong press current face to switch."
+        textView.text = "DEBUG MODE\nMinimal Red Face Active\nCheck picker."
         textView.gravity = android.view.Gravity.CENTER
         setContentView(textView)
     }

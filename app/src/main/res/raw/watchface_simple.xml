@@ -1,0 +1,15 @@
+<WatchFace width="450" height="450">
+    <!-- Bright Red Background for High Visibility -->
+    <PartDraw x="0" y="0" width="450" height="450">
+        <Fill color="#FF0000" />
+    </PartDraw>
+    
+    <!-- Simple Digital Clock to prove it's alive -->
+    <PartText x="225" y="225" width="400" height="100" pivotX="0.5" pivotY="0.5">
+        <Text align="CENTER" size="50" color="#FFFFFF">
+            <Font family="SYNC_TO_DEVICE" weight="BOLD" size="50" />
+            <Template>%s</Template>
+            <Parameter expression="[HOUR_0_23] + ':' + [MINUTE]" />
+        </Text>
+    </PartText>
+</WatchFace>

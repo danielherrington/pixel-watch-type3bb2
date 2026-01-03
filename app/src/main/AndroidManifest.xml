@@ -54,7 +54,7 @@
 
         <property
             android:name="com.google.android.wearable.watchface.format"
-            android:resource="@raw/watchface" />
+            android:resource="@raw/watchface_simple" />
 
     </application>
 </manifest>
