@@ -2,12 +2,30 @@
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
-        android:label="Ressence BB2">
-        
+        android:label="Ressence BB2"
+        android:allowBackup="true">
+
         <!-- 
-          Modern Watch Face Format declaration.
-          The system reads 'res/raw/watchface.xml' to render the face.
+          Service declaration required for the system to recognize this as a Watch Face.
+          Even for XML-only faces, we declare the service that handles the format.
+          Use the standard AndroidX class if using Jetpack, or the platform one.
+          For strict WFF without Java, the system looks for the property, BUT 
+          the manifest usually still needs a service entry point for the picker.
+          
+          However, for API 34+ WFF, the property might be enough IF the package is valid.
+          But to be safe and standard, we add the service block pointing to the
+          Google WatchFaceService class which handles the XML.
         -->
+        <service
+            android:name="androidx.wear.watchface.WatchFaceService"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
+            </intent-filter>
+        </service>
+
         <property
             android:name="com.google.android.wearable.watchface.format"
             android:resource="@raw/watchface" />
