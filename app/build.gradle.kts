@@ -30,5 +30,5 @@ android {
 }
 
 dependencies {
-    implementation("androidx.wear.watchface:watchface:1.2.1")
+    // No external dependencies for pure XML + Stub WallpaperService
 }
