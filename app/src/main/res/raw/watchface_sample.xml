@@ -1,0 +1,27 @@
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+    <!-- Simple Analog Face using [MIN] and [SEC] tags -->
+    
+    <!-- Background -->
+    <PartDraw x="0" y="0" width="450" height="450">
+        <Fill color="#333333" />
+    </PartDraw>
+
+    <!-- Minute Hand -->
+    <PartDraw x="0" y="0" width="450" height="450"
+              rotation="([MIN] + [SEC]/60) * 6">
+        <Line x1="225" y1="225" x2="225" y2="50" strokeWidth="8" color="#FFFFFF" />
+    </PartDraw>
+
+    <!-- Second Hand -->
+    <PartDraw x="0" y="0" width="450" height="450"
+              rotation="[SEC] * 6">
+        <Line x1="225" y1="225" x2="225" y2="50" strokeWidth="4" color="#FF0000" />
+    </PartDraw>
+    
+    <!-- Center Cap -->
+    <PartDraw x="0" y="0" width="450" height="450">
+        <row>
+             <Ellipse x="215" y="215" width="20" height="20" color="#FFFFFF" />
+        </row>
+    </PartDraw>
+</WatchFace>
