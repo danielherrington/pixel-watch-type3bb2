@@ -10,7 +10,7 @@
          Minute Hand is graphical on the disc, pointing "UP" relative to the disc.
     -->
     <Group x="0" y="0" width="450" height="450"
-           rotation="([MIN] + [SEC]/60) * 6">
+           rotation="([MINUTE] + [SECOND]/60) * 6">
         
         <!-- 1. The Main Disc Background (Minutes Track) -->
         <PartImage x="0" y="0" width="450" height="450">
@@ -27,7 +27,7 @@
              Position: x=140, y=280 approx
         -->
         <Group x="105" y="245" width="160" height="160"
-               rotation="-(([MIN] + [SEC]/60) * 6)">
+               rotation="-(([MINUTE] + [SECOND]/60) * 6)">
             <!-- Dial Background -->
             <PartImage x="0" y="0" width="160" height="160">
                 <Image resource="bg_subdial_hours"/>
@@ -35,7 +35,7 @@
             <!-- Hour Hand -->
             <PartImage x="0" y="0" width="160" height="160"
                        pivotX="0.5" pivotY="0.5"
-                       rotation="([HOUR_0_11] + [MIN]/60) * 30">
+                       rotation="([HOUR_0_11] + [MINUTE]/60) * 30">
                 <Image resource="hand_hour"/>
             </PartImage>
         </Group>
@@ -44,16 +44,16 @@
              Position: x=165, y=50 approx
         -->
         <Group x="165" y="80" width="120" height="120"
-               rotation="-(([MIN] + [SEC]/60) * 6)">
+               rotation="-(([MINUTE] + [SECOND]/60) * 6)">
             <!-- Dial Background -->
             <PartImage x="0" y="0" width="120" height="120">
                 <Image resource="bg_subdial_runner"/>
             </PartImage>
-            <!-- Runner Hand (360 deg in 180s) -->
-            <!-- (TIME_T % 180000) / 500 -->
+            <!-- Runner Hand (360 deg in 180s = 3 minutes) -->
+            <!-- Use UTC_TIMESTAMP for milliseconds epoch -->
             <PartImage x="0" y="0" width="120" height="120"
                        pivotX="0.5" pivotY="0.5"
-                       rotation="([TIME_T] % 180000) / 500">
+                       rotation="([UTC_TIMESTAMP] % 180000) / 500">
                 <Image resource="hand_runner"/>
             </PartImage>
         </Group>
@@ -62,7 +62,7 @@
              Position: x=300, y=200 approx
         -->
         <Group x="300" y="180" width="120" height="120"
-               rotation="-(([MIN] + [SEC]/60) * 6)">
+               rotation="-(([MINUTE] + [SECOND]/60) * 6)">
             <!-- Dial Background -->
             <PartImage x="0" y="0" width="120" height="120">
                 <Image resource="bg_subdial_day"/>
@@ -79,7 +79,7 @@
              Position: x=250, y=300 approx
         -->
         <Group x="250" y="300" width="100" height="100"
-               rotation="-(([MIN] + [SEC]/60) * 6)">
+               rotation="-(([MINUTE] + [SECOND]/60) * 6)">
             <!-- Dial Background -->
             <PartImage x="0" y="0" width="100" height="100">
                 <Image resource="bg_subdial_temp"/>
@@ -87,7 +87,7 @@
             <!-- Gauge Hand (-45 to +45 range) -->
             <PartImage x="0" y="0" width="100" height="100"
                        pivotX="0.5" pivotY="0.5"
-                       rotation="([BATTERY_PERCENT] * 0.9) - 45">
+                       rotation="([BATTERY_LEVEL] * 0.9) - 45">
                 <Image resource="hand_small"/>
             </PartImage>
         </Group>
