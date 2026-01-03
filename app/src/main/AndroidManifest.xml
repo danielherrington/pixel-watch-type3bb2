@@ -37,8 +37,32 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+        <!-- 
+            Service required for Picker Discovery.
+            Even though we use WFF XML for rendering, this Service entry is mandatory
+            for the system to list the watch face in the "Add New" menu.
+        -->
+        <service
+            android:name="com.example.ressencebb2.RessenceWatchFaceService"
+            android:exported="true"
+            android:label="Ressence BB2"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
             </intent-filter>
-        </activity>
+            
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview"
+                android:resource="@drawable/preview" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview_circular"
+                android:resource="@drawable/preview" />
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/watch_face" />
+        </service>
 
         <property
             android:name="com.google.android.wearable.watchface.format"
