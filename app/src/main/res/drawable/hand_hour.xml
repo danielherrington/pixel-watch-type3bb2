@@ -10,6 +10,6 @@
       android:pathData="M78,40 L82,40 L81,80 L79,80 Z" />
   
   <!-- Center Cap -->
-  <circle android:cx="80" android:cy="80" android:r="3" android:fillColor="#111111"/>
-  <circle android:cx="80" android:cy="80" android:r="2" android:fillColor="#333333"/>
+  <path android:fillColor="#111111" android:pathData="M80,77 a3,3 0 1,0 0,6 a3,3 0 1,0 0,-6"/>
+  <path android:fillColor="#333333" android:pathData="M80,78 a2,2 0 1,0 0,4 a2,2 0 1,0 0,-4"/>
 </vector>
