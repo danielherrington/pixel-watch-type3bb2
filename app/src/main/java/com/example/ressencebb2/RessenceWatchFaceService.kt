@@ -1,26 +1,24 @@
 package com.example.ressencebb2
 
-import android.view.SurfaceHolder
-import androidx.wear.watchface.ComplicationSlotsManager
-import androidx.wear.watchface.WatchFace
-import androidx.wear.watchface.WatchFaceService
-import androidx.wear.watchface.WatchState
-import androidx.wear.watchface.style.CurrentUserStyleRepository
+import android.service.wallpaper.WallpaperService
 
 /**
- * Stub Service to satisfy Manifest requirements.
- * The system should use the XML definition via the <property> tag.
+ * Native Stub Service.
+ * 
+ * We use the platform WallpaperService instead of the Jetpack WatchFaceService
+ * to avoid complex lifecycle requirements. This class exists ONLY to:
+ * 1. Satisfy the manifest "service" requirement for the Picker.
+ * 2. NOT crash when the system probes it.
+ *
+ * The <property android:name="com.google.android.wearable.watchface.format" ... />
+ * in the manifest will take precedence for actual rendering.
  */
-class RessenceWatchFaceService : WatchFaceService() {
-    override suspend fun createWatchFace(
-        surfaceHolder: SurfaceHolder,
-        watchState: WatchState,
-        complicationSlotsManager: ComplicationSlotsManager,
-        currentUserStyleRepository: CurrentUserStyleRepository
-    ): WatchFace {
-        // This should not be called if WFF property is respected.
-        // Returning null or throwing might crash if called.
-        // We do minimal implementation just in case.
-        throw NotImplementedError("WFF XML should handle rendering.")
+class RessenceWatchFaceService : WallpaperService() {
+    override fun onCreateEngine(): Engine {
+        return object : Engine() {
+            // A dummy engine that does nothing.
+            // The system uses the XML definition, so this engine is never actually shown
+            // unless the XML property is ignored (which shouldn't happen on supported devices).
+        }
     }
 }
