@@ -1,55 +1,70 @@
 package com.example.ressencebb2
 
-import android.view.SurfaceHolder
-import androidx.wear.watchface.CanvasType
-import androidx.wear.watchface.ComplicationSlotsManager
-import androidx.wear.watchface.Renderer
-import androidx.wear.watchface.WatchFace
-import androidx.wear.watchface.WatchFaceService
-import androidx.wear.watchface.WatchFaceType
-import androidx.wear.watchface.style.CurrentUserStyleRepository
-import java.time.ZonedDateTime
-import android.graphics.Canvas
+import android.service.wallpaper.WallpaperService
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Rect
+import android.graphics.Canvas
+import android.view.SurfaceHolder
+import android.os.Handler
+import android.os.Looper
 
-class RessenceWatchFaceService : WatchFaceService() {
+class RessenceWatchFaceService : WallpaperService() {
+    override fun onCreateEngine(): Engine {
+        return RessenceEngine()
+    }
 
-    override suspend fun createWatchFace(
-        surfaceHolder: SurfaceHolder,
-        watchState: androidx.wear.watchface.WatchState,
-        complicationSlotsManager: ComplicationSlotsManager,
-        currentUserStyleRepository: CurrentUserStyleRepository
-    ): WatchFace {
-        
-        // internal simple renderer
-        val renderer = object : Renderer.CanvasRenderer(
-            surfaceHolder,
-            currentUserStyleRepository,
-            watchState,
-            CanvasType.HARDWARE,
-            16L
-        ) {
-            val paint = Paint().apply {
-                color = Color.RED
-                textSize = 50f
-                textAlign = Paint.Align.CENTER
-            }
+    inner class RessenceEngine : Engine() {
+        private val handler = Handler(Looper.getMainLooper())
+        private val drawRunnable = Runnable { draw() }
+        private var visible = false
 
-            override fun render(canvas: Canvas, bounds: Rect, zonedDateTime: ZonedDateTime) {
-                canvas.drawColor(Color.BLACK)
-                canvas.drawText("CODE FACE", bounds.centerX().toFloat(), bounds.centerY().toFloat(), paint)
-            }
-
-            override fun renderHighlightLayer(canvas: Canvas, bounds: Rect, zonedDateTime: ZonedDateTime) {
-                // No highlight needed
+        override fun onVisibilityChanged(visible: Boolean) {
+            this.visible = visible
+            if (visible) {
+                handler.post(drawRunnable)
+            } else {
+                handler.removeCallbacks(drawRunnable)
             }
         }
 
-        return WatchFace(
-            WatchFaceType.ANALOG,
-            renderer
-        )
+        override fun onSurfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
+            super.onSurfaceChanged(holder, format, width, height)
+            draw()
+        }
+
+        override fun onSurfaceDestroyed(holder: SurfaceHolder) {
+            super.onSurfaceDestroyed(holder)
+            visible = false
+            handler.removeCallbacks(drawRunnable)
+        }
+
+        private fun draw() {
+            val holder = surfaceHolder
+            var canvas: Canvas? = null
+            try {
+                canvas = holder.lockCanvas()
+                if (canvas != null) {
+                    // Draw Green Background to prove Native Service works
+                    canvas.drawColor(Color.GREEN)
+                    
+                    val paint = Paint().apply {
+                        color = Color.BLACK
+                        textSize = 50f
+                        textAlign = Paint.Align.CENTER
+                    }
+                    canvas.drawText("NATIVE SERVICE", canvas.width / 2f, canvas.height / 2f, paint)
+                }
+            } catch (e: Exception) {
+                // Log error
+            } finally {
+                if (canvas != null) {
+                    try {
+                        holder.unlockCanvasAndPost(canvas)
+                    } catch (e: Exception) {
+                        // Ignore
+                    }
+                }
+            }
+        }
     }
 }
