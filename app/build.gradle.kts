@@ -32,5 +32,12 @@ android {
 }
 
 dependencies {
-    implementation("androidx.wear.watchface:watchface:1.2.1")
+    val wearWatchFaceVersion = "1.2.1"
+    implementation("androidx.wear.watchface:watchface:$wearWatchFaceVersion")
+    implementation("androidx.wear.watchface:watchface-complications-data:$wearWatchFaceVersion")
+    implementation("androidx.wear.watchface:watchface-complications-rendering:$wearWatchFaceVersion")
+    implementation("androidx.wear.watchface:watchface-editor:$wearWatchFaceVersion")
+    implementation("androidx.wear.watchface:watchface-style:$wearWatchFaceVersion")
+    implementation("androidx.wear.watchface:watchface-client:$wearWatchFaceVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.7.3")
 }
