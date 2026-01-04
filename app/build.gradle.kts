@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "com.example.ressencebb2"
     compileSdk = 35
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         applicationId = "com.example.ressencebb2"
