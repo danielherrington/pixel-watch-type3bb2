@@ -5,8 +5,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Canvas
 import android.view.SurfaceHolder
-import android.os.Handler
-import android.os.Looper
 
 class RessenceWatchFaceService : WallpaperService() {
     override fun onCreateEngine(): Engine {
@@ -14,28 +12,16 @@ class RessenceWatchFaceService : WallpaperService() {
     }
 
     inner class RessenceEngine : Engine() {
-        private val handler = Handler(Looper.getMainLooper())
-        private val drawRunnable = Runnable { draw() }
-        private var visible = false
-
-        override fun onVisibilityChanged(visible: Boolean) {
-            this.visible = visible
-            if (visible) {
-                handler.post(drawRunnable)
-            } else {
-                handler.removeCallbacks(drawRunnable)
-            }
-        }
-
+        
         override fun onSurfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
             super.onSurfaceChanged(holder, format, width, height)
             draw()
         }
 
-        override fun onSurfaceDestroyed(holder: SurfaceHolder) {
-            super.onSurfaceDestroyed(holder)
-            visible = false
-            handler.removeCallbacks(drawRunnable)
+        override fun onVisibilityChanged(visible: Boolean) {
+            if (visible) {
+                draw()
+            }
         }
 
         private fun draw() {
@@ -44,24 +30,25 @@ class RessenceWatchFaceService : WallpaperService() {
             try {
                 canvas = holder.lockCanvas()
                 if (canvas != null) {
-                    // Draw Green Background to prove Native Service works
-                    canvas.drawColor(Color.GREEN)
+                    // Draw BLUE Background - One Shot, No Loop
+                    canvas.drawColor(Color.BLUE)
                     
                     val paint = Paint().apply {
-                        color = Color.BLACK
-                        textSize = 50f
+                        color = Color.WHITE
+                        textSize = 40f
                         textAlign = Paint.Align.CENTER
+                        isAntiAlias = true
                     }
-                    canvas.drawText("NATIVE SERVICE", canvas.width / 2f, canvas.height / 2f, paint)
+                    canvas.drawText("NATIVE BLUE", canvas.width / 2f, canvas.height / 2f, paint)
                 }
             } catch (e: Exception) {
-                // Log error
+                e.printStackTrace()
             } finally {
                 if (canvas != null) {
                     try {
                         holder.unlockCanvasAndPost(canvas)
                     } catch (e: Exception) {
-                        // Ignore
+                        e.printStackTrace()
                     }
                 }
             }
